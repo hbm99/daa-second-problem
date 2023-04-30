@@ -29,10 +29,10 @@ def model(graph: List[List[Neighbor]], vertices: List[int]) -> Tuple[List[List[N
     
     for v in range(len(graph)):
         for neighbor in graph[v]:
-            reverse_neighbor = Neighbor(v, neighbor.weight)
+            reverse_neighbor = Neighbor(v, 0)
             model_graph[neighbor.id].append(reverse_neighbor)
             
-            original_neighbor = Neighbor(neighbor.id, 0)
+            original_neighbor = Neighbor(neighbor.id, neighbor.weight)
             model_graph[v].append(original_neighbor)
             
             weigths.append(neighbor.weight)
