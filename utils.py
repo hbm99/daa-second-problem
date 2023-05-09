@@ -3,7 +3,6 @@ from typing import List, Tuple
 
 from neighbor import Neighbor
 
-
 def dfs(graph: List[List[Neighbor]], current: int, visited: List[bool], allowed_weight: int, result: List[int]) -> None:
     visited[current] = True
     for neighbor in graph[current]:
@@ -13,15 +12,6 @@ def dfs(graph: List[List[Neighbor]], current: int, visited: List[bool], allowed_
             continue
         dfs(graph, neighbor.id, visited, allowed_weight, result)
     result.append(current)
-    
-def back_dfs(graph: List[List[Neighbor]], current: int, visited: List[bool], allowed_weight: int) -> None:
-    visited[current] = True
-    for neighbor in graph[current]:
-        if visited[neighbor.id]:
-            continue
-        if neighbor.weight > allowed_weight:
-            continue
-        back_dfs(graph, neighbor.id, visited, allowed_weight)
         
 def model(graph: List[List[Neighbor]], vertices: List[int]) -> Tuple[List[List[Neighbor]], List[int]]:
     model_graph: List[List[Neighbor]] = [[] for _ in range(len(vertices))]
